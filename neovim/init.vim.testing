@@ -1,0 +1,224 @@
+" Inspired by: https://realpython.com/vim-and-python-a-match-made-in-heaven/
+
+" -[ Plugins ]-
+
+call plug#begin()
+
+" -[ Completion ]-
+Plug 'neoclide/coc.nvim'	     , {'branch': 'release'}    " Completion engine like code
+
+Plug 'mattn/emmet-vim'		     , { 'for': 'html'}		" Emmet for html abrevation
+
+" -[ Code navigation ]-
+Plug 'vim-scripts/taglist.vim'       , {'on': 'TlistToggle'}    " Code navigation plugin (IDE project viewer)
+					                        " Don't forget to install exuberant ctags
+					                        " sudo apt-get install exuberant-ctags
+
+Plug 'airblade/vim-gitgutter'					" git diff 
+
+" -[ Synthax highlighting ]-
+Plug 'sheerun/vim-polyglot'					" Support a lot of language syntax hightlighting
+
+" -[ Tools ]-
+Plug 'tmhedberg/SimpylFold'                                     " folding
+Plug 'scrooloose/nerdtree'           , {'on': 'NERDTreeToggle'} " File viewer
+
+Plug 'junegunn/fzf' 						" Fuzy finder
+Plug 'junegunn/fzf.vim'						" Vim specific plugin
+
+Plug 'godlygeek/tabular'                                        " Easy tabular indentation
+Plug 'mtth/scratch.vim'						" Scratch window
+Plug 'tpope/vim-surround'					" Surround
+Plug 'luochen1990/rainbow'					" multicolor enclosure
+Plug 'junegunn/vim-peekaboo'					" More readable register 
+Plug 'tpope/vim-fugitive'					" Git wrapper
+Plug 'mbbill/undotree'						" Visualizes undo history
+Plug 'easymotion/vim-easymotion'				" more visual count motion
+Plug 'vimwiki/vimwiki'						" Internal wiki for vim
+
+" -[ Visual ]-
+Plug 'vim-airline/vim-airline'                                  " Enhanced status bar
+Plug 'vim-airline/vim-airline-themes'				" Themes for vim-airline
+
+" -[ Spell checker ]-
+Plug 'dpelle/vim-LanguageTool'					" LanguageTool to check french grammar
+
+" -[ Theme ]-
+Plug 'ayu-theme/ayu-vim'					" Color theme
+
+" -[Snippets]-
+Plug 'honza/vim-snippets'					" vim-snippets
+
+call plug#end()
+
+" -[ Plugins specific configuration ]-
+
+" { SimpylFold }
+let g:SimpylFold_docstring_preview	= 1
+
+" { LanguageTool }
+let g:languagetool_jar='/home/bignose/Static/LanguageTool-4.8/languagetool-commandline.jar'
+let g:languagetool_lang='fr'
+
+" {vim-rainbow}
+let g:rainbow_active = 1 
+
+" {vim-airline-theme}
+let g:airline_theme='dark'
+
+" {vim wiki}
+let g:vimwiki_list = [{'path': '~/Projects/Documentation/vimWiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
+" -[ Neovim configuration ]-
+
+" Enter the current millenium
+set nocompatible
+
+" Enable synthax and plugins (for netrw)
+syntax enable
+filetype plugin on
+
+" Search down into subfolders
+" Provides tab-completion for all file-related tasks
+set path+=**
+
+" Display all matching files when we tab complete
+set wildmenu
+
+" UTF-8 support
+set encoding=utf-8
+
+" No mode show ( because of the status bar, this information is redondant )
+set noshowmode
+
+" Hidden mode for hidding none use window
+set hidden
+
+" Replace leader key for 'ù'
+let mapleader = "ù"
+
+" Save changes history
+set undodir=~/.nvim/undo/
+set undofile
+
+" Colors
+set hlsearch
+hi Search ctermbg=LightYellow
+hi Search ctermfg=Red
+
+hi MatchParen cterm=bold ctermbg=DarkRed ctermfg=magenta
+hi Visual ctermfg=LightRed ctermbg=DarkRed
+
+" Ayu theme configuration
+set termguicolors     " enable true colors support
+let ayucolor="dark"   " for dark version of theme
+autocmd ColorScheme ayu highlight! Normal ctermbg=NONE guibg=NONE
+colorscheme ayu
+
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+" Load ctags for this project
+set tags=./tags
+
+" PEP 8 indentation
+au BufNewFile,BufRead *.py,*.md 
+			\ set tabstop=4 	| 
+			\ set softtabstop=4 	| 
+			\ set shiftwidth=4 	|  
+			\ set expandtab 	| 
+			\ set autoindent 	|
+			\ set nonumber		|
+			\ set fileformat=unix
+
+au BufNewFile,BufRead *.js,*.html,*.css,*.tex 
+			\ set tabstop=2 	| 
+			\ set softtabstop=2 	| 
+			\ set shiftwidth=2
+
+" Latex file setting
+let g:tex_flavor='latex'
+
+" Vim airline
+let g:airline_powerline_fonts = 1
+
+" -[ Key biding ]-
+
+" Go to previous TAB
+nmap <C-up> gT
+imap <C-up> <Esc>gT
+
+" Go to next TAB
+nmap <C-down> gt
+imap <C-down> <Esc>gt
+
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Use <c-space> to trigger completion with Coc
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" -[ coc.nvim ]-
+"   <leader>gd    - Jump to definition of current symbol
+"   <leader>gr    - Jump to references of current symbol
+"   <leader>gi    - Jump to implementation of current symbol
+"   <leader>fs    - Fuzzy search current project symbols
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gr <Plug>(coc-references)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nnoremap <silent> <leader>fs :<C-u>CocList -I -N --top symbols<CR>
+
+"  <leader> j      - Jump to next diagnostic position
+"  <leader> k      - Jump to previous diagnostic position
+"  <leader> f      - Try to run quickfix action
+nmap <silent> <Leader>j <Plug>(coc-diagnostic-next)
+nmap <silent> <Leader>k <Plug>(coc-diagnostic-prev)
+nmap <silent> <Leader>f <Plug>(coc-fix-current)
+
+"  <leader> r      - Open refactor window
+nmap <silent> <Leader>r <Plug>(coc-refactor)
+
+"  <leader> F      - Format the whole buffer
+nmap <silent> <Leader>F <Plug>(coc-format)
+
+" -[ coc.snippets ]-
+"  <c-j>	   - Jump to next placeholder
+"  <c-k>	   - Jump to previous placeholder
+let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_prev = '<c-k>'
+
+" Enable folding with the spacebar
+nnoremap <space> za
+
+" Enable NERDTree with alt+e
+map <M-e> :NERDTreeToggle<CR>
+
+" Enable vim-taglist panel
+map <M-d> :TlistToggle<CR>
+
+" Enable Undotree
+map <M-u> :UndotreeToggle<CR>
+
+" Exit of terminal insert mode
+tnoremap <Esc> <C-\><C-n>
+
+" -[Commands]-
+command! MakeTags !ctags -R .
+
+" -[ Function ]-
+
+" Clear all vim registry [not very usefull]
+function ClearRegs()
+	let regs 	= 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"'
+	let i		= 0
+	while(i<strlen(regs))
+		exec 'let @'.regs[i].'=""'
+		let i = i + 1
+	endwhile
+	unlet regs
+endfunction
+
+" -[ Final ]-
