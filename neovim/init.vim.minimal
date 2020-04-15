@@ -19,8 +19,7 @@ Plug 'mbbill/undotree'						" Visualizes undo history
 Plug 'vimwiki/vimwiki'						" Internal wiki for vim
 
 " -[ Visual ]-
-Plug 'vim-airline/vim-airline'                                  " Enhanced status bar
-Plug 'vim-airline/vim-airline-themes'				" Themes for vim-airline
+Plug 'itchyny/lightline.vim'					" LightLine for simple status bar [no powerline]
 
 " -[ Theme ]-
 Plug 'ayu-theme/ayu-vim'					" Color theme
@@ -32,8 +31,8 @@ call plug#end()
 " { SimpylFold }
 let g:SimpylFold_docstring_preview	= 1
 
-" {vim-airline-theme}
-let g:airline_theme='dark'
+" { Lightline theme}
+let g:lightline = {'colorscheme': 'one'}
 
 " {vim wiki}
 let g:vimwiki_list = [{'path': '~/Projects/Documentation/vimWiki/', 'syntax': 'markdown', 'ext': '.md'}]
@@ -87,9 +86,6 @@ colorscheme ayu
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
-
-" Vim airline
-let g:airline_powerline_fonts = 1
 
 " -[ Key biding ]-
 
