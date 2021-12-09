@@ -133,10 +133,11 @@ au BufNewFile,BufRead *.py,*.md
 			\ set nonumber		|
 			\ set fileformat=unix
 
-au BufNewFile,BufRead *.js,*.html,*.css,*.tex 
+au BufNewFile,BufRead *.js,*.html,*.css,*.tex,*.vue,*.json,*.rb 
 			\ set tabstop=2 	| 
 			\ set softtabstop=2 	| 
-			\ set shiftwidth=2
+			\ set shiftwidth=2	|
+			\ set expandtab
 
 " Latex file setting
 let g:tex_flavor='latex'
