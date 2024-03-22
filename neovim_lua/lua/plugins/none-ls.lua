@@ -12,7 +12,7 @@ return {
                         filetypes = { "html", "json", "yaml", "markdown" },
                     }),
                     nls.builtins.formatting.stylua,
-                    nls.builtins.diagnostics.flake8,
+                    --nls.builtins.diagnostics.flake8,
                 },
             }
         end,
