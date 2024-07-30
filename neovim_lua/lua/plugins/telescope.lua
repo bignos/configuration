@@ -63,7 +63,7 @@ return {
 
         },
         init = function()
-            local trouble = require("trouble.providers.telescope")
+            local trouble = require("trouble.sources.telescope")
             local telescope = require("telescope")
             telescope.setup {
                 defaults = {

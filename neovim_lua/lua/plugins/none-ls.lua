@@ -11,6 +11,9 @@ return {
                     nls.builtins.formatting.prettier.with({
                         filetypes = { "html", "json", "yaml", "markdown" },
                     }),
+                    nls.builtins.formatting.erb_format.with({
+                        filetypes = { "eruby" },                        
+                    }),
                     nls.builtins.formatting.stylua,
                     --nls.builtins.diagnostics.flake8,
                 },

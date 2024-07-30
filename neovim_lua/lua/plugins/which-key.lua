@@ -1,32 +1,32 @@
 return {
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        config = function(_, _)
-            vim.o.timeout = true
-            vim.o.timeoutlen = 500
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		config = function(_, _)
+			vim.o.timeout = true
+			vim.o.timeoutlen = 500
 
-            local wk = require("which-key")
-            wk.setup({
-                plugins = {
-                    spelling = {
-                        enabled = true
-                    },
-                },
-                window = {
-                    border = "single",
-                },
-            })
-            local keymaps = {
-                mode = { "n", "v" },
-                f = { name = ">Find" },
-                g = { name = ">Git" },
-                v = { name = ">Code" },
-                r = { name = ">Refactor" },
-                x = { name = ">Trouble" },
-                M = { name = ">BookMacro" },
-            }
-            wk.register(keymaps, { prefix = "<leader>" })
-        end,
-    },
+			local wk = require("which-key")
+			wk.setup({
+				plugins = {
+					spelling = {
+						enabled = true,
+					},
+				},
+				win = {
+					border = "single",
+				},
+			})
+			wk.add({
+				mode = { "n", "v" },
+				{ "<leader>D", group = ">Debug" },
+				{ "<leader>M", group = ">BookMacro" },
+				{ "<leader>f", group = ">Find" },
+				{ "<leader>g", group = ">Git" },
+				{ "<leader>r", group = ">Refactor" },
+				{ "<leader>v", group = ">Code" },
+				{ "<leader>x", group = ">Trouble" },
+			})
+		end,
+	},
 }
