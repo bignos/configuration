@@ -19,7 +19,7 @@ require("lazy").setup({
     defaults = {
         version = false, -- always use the latest git commit
     },
-    install = { colorscheme = { "tokyonight" } },
+    install = { colorscheme = { "flow" } },
     checker = { enabled = true, notify = false }, -- automatically check for plugin updates
 })
 require("config.keymaps")
