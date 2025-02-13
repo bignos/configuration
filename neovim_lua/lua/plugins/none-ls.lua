@@ -15,6 +15,7 @@ return {
                         filetypes = { "eruby" },                        
                     }),
                     nls.builtins.formatting.stylua,
+                    nls.builtins.formatting.rufo,
                     --nls.builtins.diagnostics.flake8,
                 },
             }
