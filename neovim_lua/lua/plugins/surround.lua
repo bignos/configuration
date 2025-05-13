@@ -1,14 +1,12 @@
 return {
-    {
-        "kylechui/nvim-surround",
-        init = function()
-            require("nvim-surround").setup({
-                -- Change mapping to avoid conflict with Leap
-                keymaps = {
-                    visual = "<leader>s",
-                    visual_line = "<leader>S"
-                }
-            })
-        end
-    }
+	{
+		"kylechui/nvim-surround",
+		version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	},
 }

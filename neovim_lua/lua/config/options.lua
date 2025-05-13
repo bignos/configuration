@@ -2,6 +2,8 @@ vim.g.mapleader          = " "
 vim.g.maplocalleader     = " "
 
 -- netrw
+vim.g.laded_netrw        = 1
+vim.g.loaded_netrwPlugin = 1
 vim.g.netrw_winsize      = 16
 vim.g.netrw_liststyle    = 3
 vim.g.netrw_banner       = 0

@@ -5,10 +5,21 @@ vim.keymap.set("n", "<leader>L", vim.cmd.Lazy, { desc = "Lazy" })
 vim.keymap.set("n", "H", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
 vim.keymap.set("n", "L", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
 
--- Netrw
-vim.keymap.set("n", "<leader>E", vim.cmd.Lexplore, { desc = "File Explorer" })
-
 -- Terminal
+vim.keymap.set(
+    "n",
+    "<leader>t",
+    function()
+        local old_splitbelow = vim.o.splitbelow
+        vim.o.splitbelow = true
+        vim.cmd("split")
+        vim.o.splitbelow = old_splitbelow
+        vim.cmd("resize 15")
+        vim.cmd("terminal")
+        vim.cmd("startinsert")
+    end,
+    { desc = "Terminal" }
+)
 vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { desc = "Normal mode for Terminal" })
 
 -- Move line in visual mode
