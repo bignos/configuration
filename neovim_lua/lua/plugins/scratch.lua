@@ -3,7 +3,7 @@ return {
         "cenk1cenk2/scratch.nvim",
         keys = {
             {
-                "<leader>a",
+                "<leader>S",
                 function()
                     vim.cmd.vsplit()
                     vim.cmd.wincmd('l')
