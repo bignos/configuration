@@ -54,7 +54,7 @@ return {
                             key = 'e',
                             keymap = 'SPC e',
                             key_hl = 'Number',
-                            action = chadopen,
+                            action = vim.cmd.NvimTreeToggle,
                         },
                         {
                             icon = '󰱼 ',

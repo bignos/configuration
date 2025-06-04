@@ -82,7 +82,8 @@ return {
                     {name = 'nvim_lsp'},
                     {name = 'nvim_lua'},
                     {name = 'buffer', keyword_length = 3},
-                    {name = 'luasnip', keyword_length = 2},
+                    {name = 'neorg'},
+                    
                 },
                 window = {
                     documentation = cmp.config.window.bordered(),

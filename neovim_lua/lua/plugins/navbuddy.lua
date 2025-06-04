@@ -10,7 +10,7 @@ return {
 		},
         keys = {
             {
-                "<leader>n",
+                "<leader>N",
                 vim.cmd.Navbuddy,
                 desc = "code Navigator Navbuddy"
             }
