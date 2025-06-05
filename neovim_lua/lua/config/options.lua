@@ -42,3 +42,6 @@ opt.hlsearch       = false
 opt.incsearch      = true
 
 opt.termguicolors  = true
+
+-- Spell
+opt.spelllang      = "fr"
