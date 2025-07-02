@@ -6,7 +6,7 @@ return {
 		version = false,
 		opts = {
 			provider = "openrouter",
-            vendors = {
+            providers = {
                 openrouter = {
                     __inherited_from = "openai",
                     api_key_name = "OPENAI_API_KEY",
