@@ -48,14 +48,6 @@ return {
                 completion = {
                     autocomplete = false,  -- No toggle auto the completion menu
                 },
-                sources = {
-                    {name = 'path'},
-                    {name = 'nvim_lsp'},
-                    {name = 'nvim_lua'},
-                    {name = 'buffer', keyword_length = 3},
-                    {name = 'neorg'},
-                    
-                },
                 window = {
                     documentation = cmp.config.window.bordered(),
                 },
@@ -66,10 +58,28 @@ return {
                     ['<cr>'] = cmp.mapping.confirm({ select = true }),
                     ['<C-Space>'] = cmp.mapping.complete(),
                 }),
+
                 sources = cmp.config.sources({
                     { name = 'nvim_lsp' },
+                    { name = 'path'},
                 }, { 
-                    { name = 'buffer' },
+                    { name = 'buffer', keyword_length = 3 },
+                }),
+
+                cmp.setup.filetype('lua', {
+                    sources = cmp.config.sources({
+                        { name = 'nvim_lua' },
+                    }, {
+                        { name = 'buffer', keyword_length = 3 },
+                    })
+                }),
+
+                cmp.setup.filetype('norg', {
+                    sources = cmp.config.sources({
+                        { name = 'neorg' },
+                    }, {
+                        { name = 'buffer', keyword_length = 3 },
+                    })
                 })
             })
 
@@ -77,10 +87,10 @@ return {
                 signs = {
                     active = true,
                     text = {
-                      [vim.diagnostic.severity.ERROR] = "",
-                        [vim.diagnostic.severity.WARN] = "",
-                        [vim.diagnostic.severity.HINT] = "",
-                        [vim.diagnostic.severity.INFO] = "",
+                        [vim.diagnostic.severity.ERROR] = "",
+                        [vim.diagnostic.severity.WARN]  = "",
+                        [vim.diagnostic.severity.HINT]  = "",
+                        [vim.diagnostic.severity.INFO]  = "",
                     },
                 },
                 virtual_text = false,
