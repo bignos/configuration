@@ -4,7 +4,7 @@ return {
         keys = {
             -- UndoTree
             {
-                "<leader>u",
+                "<leader>Uu",
                 vim.cmd.UndotreeToggle,
                 desc = "UndoTree",
             },

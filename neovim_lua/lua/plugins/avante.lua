@@ -1,11 +1,13 @@
 return {
 	{
 		"yetone/avante.nvim",
-        enabled = true,
+        enabled = false,
 		event = "VeryLazy",
 		version = false,
+        --@module 'avante'
+        --@type avante.Config
 		opts = {
-			provider = "openrouter",
+			provider = "cerebras",
             providers = {
                 openrouter = {
                     __inherited_from = "openai",
@@ -32,7 +34,6 @@ return {
                     __inherited_from = "openai",
                     api_key_name = "TOGETHER_API_KEY",
                     endpoint = "https://api.together.xyz/v1",
-                    -- model = "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
                     model = "Qwen/Qwen2.5-Coder-32B-Instruct",
                     disable_tools = true,
                 },
@@ -40,15 +41,11 @@ return {
 		},
 		build = "make",
 		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"stevearc/dressing.nvim",
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-			"echasnovski/mini.pick",
-			"nvim-telescope/telescope.nvim",
-			"hrsh7th/nvim-cmp",
-			"ibhagwan/fzf-lua",
-			"nvim-tree/nvim-web-devicons",
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            "hrsh7th/nvim-cmp",
+            "steavearc/dressing.nvim",
+            "nvim-tree/nvim-web-devicons",
 			{
 				"HakonHarnes/img-clip.nvim",
 				event = "VeryLazy",
@@ -63,13 +60,13 @@ return {
 					},
 				},
 			},
-		--	{
-		--		"MeanderingProgrammer/render-markdown.nvim",
-		--		opts = {
-		--			file_types = { "markdown", "Avante" },
-		--		},
-		--		ft = { "markdown", "Avante" },
-		--	},
+			-- {
+			-- 	"MeanderingProgrammer/render-markdown.nvim",
+			-- 	opts = {
+			-- 		file_types = { "markdown", "Avante" },
+			-- 	},
+			-- 	ft = { "markdown", "Avante" },
+			-- },
 		},
 	},
 }

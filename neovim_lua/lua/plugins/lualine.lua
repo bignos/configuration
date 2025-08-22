@@ -1,8 +1,9 @@
 return {
     {
         "nvim-lualine/lualine.nvim",
+        enabled = true,
         event = "VeryLazy",
-        dependencies = { "kyazdani42/nvim-web-devicons", opt = true },
+        dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
         init = function()
             require("lualine").setup {
                 options = {
@@ -42,7 +43,14 @@ return {
                 tabline = {},
                 winbar = {
                     lualine_a = {},
-                    lualine_b = { function() return "" end },
+                    lualine_b = { 
+                        function()
+                            if require("nvim-navic").is_available() then
+                                return ""
+                            end
+                            return ""
+                        end 
+                    },
                     lualine_c = { {
                         -- stylua: ignore
                         function()

@@ -1,6 +1,7 @@
 return {
     {
         "SmiteshP/nvim-navic",
+        enabled = true,
         dependencies = { "neovim/nvim-lspconfig" },
         lazy = true,
         init = function()

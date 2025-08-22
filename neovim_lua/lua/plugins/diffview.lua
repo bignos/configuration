@@ -5,21 +5,21 @@ return {
         keys = {
             -- Open diffview
             {
-                "<leader>gd",
+                "<leader>Gd",
                 vim.cmd.DiffviewOpen,
                 desc = "Git Diff"
             },
 
             -- Close diffview
             {
-                "<leader>gD",
+                "<leader>GD",
                 vim.cmd.DiffviewClose,
                 desc = "Close Git Diff"
             },
 
             -- Git File History
             {
-                "<leader>gh",
+                "<leader>Gh",
                 vim.cmd.DiffviewFileHistory,
                 desc = "Git File History"
             },

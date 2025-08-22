@@ -1,5 +1,6 @@
 return {
     {
-        "makerj/vim-pdf"
+        "makerj/vim-pdf",
+        enabled = true,
     }
 }

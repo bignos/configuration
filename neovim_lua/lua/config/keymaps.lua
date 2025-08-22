@@ -1,26 +1,9 @@
 -- lazy
-vim.keymap.set("n", "<leader>L", vim.cmd.Lazy, { desc = "Lazy" })
+vim.keymap.set("n", "<leader>Ul", vim.cmd.Lazy, { desc = "Lazy" })
 
 -- Buffers
 vim.keymap.set("n", "H", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
 vim.keymap.set("n", "L", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
-
--- Terminal
-vim.keymap.set(
-    "n",
-    "<leader>t",
-    function()
-        local old_splitbelow = vim.o.splitbelow
-        vim.o.splitbelow = true
-        vim.cmd("split")
-        vim.o.splitbelow = old_splitbelow
-        vim.cmd("resize 15")
-        vim.cmd("terminal")
-        vim.cmd("startinsert")
-    end,
-    { desc = "Terminal" }
-)
-vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { desc = "Normal mode for Terminal" })
 
 -- Move line in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected line down" })
@@ -48,31 +31,14 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search" })
 vim.keymap.set("n", "Q", "<nop>")
 
 -- Better system integration with system clipboard
-vim.keymap.set("n", "<leader>y", "\"+y", { desc = "Yank to clipboard" })
-vim.keymap.set("v", "<leader>y", "\"+y", { desc = "Yank to clipboard" })
-vim.keymap.set("n", "<leader>Y", "\"+Y", { desc = "Yank to clipboard" })
-
 vim.keymap.set("n", "<leader>d", "\"_d", { desc = "Delete to the blackhole" })
 vim.keymap.set("v", "<leader>d", "\"_d", { desc = "Delete to the blackhole" })
 
--- Quick and location list navigation
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next quick list" })
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Previous quick list" })
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Next location list" })
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Previous location list" })
-
--- Live replace
-vim.keymap.set(
-    "n", "<leader>s",
-    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-    { desc = "Rename all occurrence of the word under the cursor" }
-)
-
--- Reload a config file
+-- Reload a file
 vim.keymap.set(
     "n", "<leader><leader>",
     function()
-        vim.cmd("so")
+        vim.cmd("edit")
     end,
-    { desc = "Source the current file" }
+    { desc = "Reload the current file" }
 )

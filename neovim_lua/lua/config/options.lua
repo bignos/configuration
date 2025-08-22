@@ -16,7 +16,7 @@ local opt          = vim.opt
 -- Folding linked with treesitter
 opt.foldlevel      = 20
 opt.foldmethod     = "expr"
-opt.foldexpr       = "nvim_treesitter#foldexpr()"
+opt.foldexpr       = "v:lua.vim.treesitter.foldexpr()"
 
 -- Conceal
 opt.conceallevel   = 3

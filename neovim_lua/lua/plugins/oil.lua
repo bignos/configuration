@@ -10,7 +10,7 @@ return {
         keys = {
             -- Toggle the Oil window
             {
-                "<leader>E",
+                "<leader>z",
                 function()
                     -- If there is an Oil window, close it
                    -- for _, win in ipairs(vim.api.nvim_list_wins()) do

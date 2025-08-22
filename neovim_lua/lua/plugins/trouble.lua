@@ -1,35 +1,21 @@
 return {
     {
         "folke/trouble.nvim",
-        dependencies = "kyazdani42/nvim-web-devicons",
+        dependencies = "nvim-tree/nvim-web-devicons",
         cmd = "Trouble",
         keys = {
             -- Toggle Trouble
             {
-                "<leader>xx",
+                "<leader>CD",
                 "<cmd>Trouble diagnostics toggle<cr>",
-                { desc = "Errors all workspace", silent = true, noremap = true },
+                desc = "Diagnostics all workspace",
             },
 
             -- Toggle Trouble for this buffer only
             {
-                "<leader>xb",
-                "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-                { desc = "Errors only this buffer", silent = true, noremap = true },
-            },
-
-            -- Toggle Trouble for Location list
-            {
-                "<leader>xl",
-                "<cmd>Trouble loclist toggle<cr>",
-                { desc = "Location list", silent = true, noremap = true },
-            },
-
-            -- Toggle Trouble for Quickfix list
-            {
-                "<leader>xq",
-                "<cmd>Trouble qflist toggle<cr>",
-                { desc = "quickfix", silent = true, noremap = true },
+                "<leader>Cd",
+                "<cmd>Trouble diagnostics toggle filter.buf=1<cr>",
+                desc = "Diagnostics only this buffer",
             },
 
         },
